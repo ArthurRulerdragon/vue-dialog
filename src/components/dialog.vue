@@ -22,9 +22,7 @@
         ref="dialog"
         :style="style"
       >
-        <div class="dialog__header" v-if="$slots.header">
-          <slot name="header"></slot>
-        </div>
+        <slot name="header" v-if="$slots.header"></slot>
         <div class="dialog__header" v-else>
           <slot name="title">
             <span class="dialog__title">{{ title }}</span>
