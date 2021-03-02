@@ -144,7 +144,7 @@ export default {
           if (scrollBarWidth > 0 && (bodyHasOverflow || bodyOverflowY === 'scroll') && this.withoutHiddenClass) {
             document.body.style.paddingRight = this.computedBodyPaddingRight + scrollBarWidth + 'px';
           }
-          // helpers.addClass(document.body, 'popup-parent--hidden');
+          helpers.addClass(document.body, 'popup-parent--hidden');
         }
       }
 
