@@ -82,13 +82,13 @@ const PopupManager = {
 
     const modalDom = getModal();
 
-    // helper.addClass(modalDom, 'v-modal');
+    helper.addClass(modalDom, 'v-modal');
     if (this.modalFade && !hasModal) {
-      // helper.addClass(modalDom, 'v-modal-enter');
+      helper.addClass(modalDom, 'v-modal-enter');
     }
     if (modalClass) {
       let classArr = modalClass.trim().split(/\s+/);
-      // classArr.forEach(item => helper.addClass(modalDom, item));
+      classArr.forEach(item => helper.addClass(modalDom, item));
     }
     setTimeout(() => {
       helper.removeClass(modalDom, 'v-modal-enter');
@@ -136,14 +136,14 @@ const PopupManager = {
 
     if (modalStack.length === 0) {
       if (this.modalFade) {
-        // helper.addClass(modalDom, 'v-modal-leave');
+        helper.addClass(modalDom, 'v-modal-leave');
       }
       setTimeout(() => {
         if (modalStack.length === 0) {
           if (modalDom.parentNode) {
             modalDom.parentNode.removeChild(modalDom);
           }
-          // modalDom.style.display = 'none';
+          modalDom.style.display = 'none';
           PopupManager.modalDom = undefined;
         }
         helper.removeClass(modalDom, 'v-modal-leave');
