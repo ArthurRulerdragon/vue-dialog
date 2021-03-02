@@ -22,7 +22,10 @@
         ref="dialog"
         :style="style"
       >
-        <div class="dialog__header">
+        <div class="dialog__header" v-if="$slots.header">
+          <slot name="header"></slot>
+        </div>
+        <div class="dialog__header" v-else>
           <slot name="title">
             <span class="dialog__title">{{ title }}</span>
           </slot>
@@ -49,9 +52,9 @@
 import Popup from "../lib/index";
 
 const broadcast = function broadcast(componentName, eventName, params) {
-  this.$children.forEach((child) => {
-    let name = child.$options.componentName;
-    if (name === componentName) {
+  Object.keys(this.$refs || {}).forEach((key) => {
+    const child = this.$refs[key]
+    if (key === componentName) {
       child.$emit.apply(child, [eventName].concat(params));
       return;
     }
@@ -350,7 +353,7 @@ export default {
   overflow: auto;
 }
 
-popup-parent--hidden {
+.popup-parent--hidden {
   overflow: hidden;
 }
 
